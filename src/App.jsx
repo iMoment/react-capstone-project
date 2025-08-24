@@ -1,10 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignInPage from "./pages/auth/SignInPage";
+import SignUpPage from "./pages/auth/SignUpPage";
+
 const App = () => {
   return (
-    <div className="flex flex-col justify-center items-center text-green-600">
-      <div className="font-playfair text-3xl">React Capstone Project</div>
-      <div className="font-lato">Initial setup</div>
-      <div>Completed</div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SignInPage />} />
+        <Route path="sign-up" element={<SignUpPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
