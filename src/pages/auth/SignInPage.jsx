@@ -18,7 +18,10 @@ const SignInPage = () => {
         ]}
         submitButtonLabel="Sign In"
       />
-      <Link to="/sign-up" className="text-sm text-green-600 underline">
+      <Link
+        to="/sign-up"
+        className="text-sm text-green-600 underline hover:text-green-700"
+      >
         Don't have an account?
       </Link>
     </FormContainer>

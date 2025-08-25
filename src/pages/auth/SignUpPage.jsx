@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthForm from "./AuthForm";
 import FormContainer from "./FormContainer";
+import * as userService from "../../services/user";
 
 const SignUpPage = () => {
+  const [error, setError] = useState("");
+
   return (
     <FormContainer>
+      <div className="font-lato text-red-700">{error}</div>
       <AuthForm
         fields={[
           {
@@ -17,12 +22,44 @@ const SignUpPage = () => {
           },
           {
             label: "Confirm password:",
-            text: "password",
+            type: "password",
           },
         ]}
         submitButtonLabel="Create account"
+        onSubmit={async (values) => {
+          if (values["Username:"].length < 4) {
+            setError("Username must contain at least 4 characters.");
+            return;
+          }
+
+          if (values["Password:"].length < 4) {
+            setError("Password must contain at least 4 characters.");
+            return;
+          }
+
+          if (values["Password:"] !== values["Confirm password:"]) {
+            setError("Passwords do not match.");
+            return;
+          }
+
+          const response = await userService.createUser({
+            username: values["Username:"],
+            password: values["Password:"],
+          });
+
+          if (response.status === 201) {
+            console.log("User created!");
+            setError("");
+          } else {
+            const data = await response.json();
+            setError(data.error);
+          }
+        }}
       />
-      <Link to="/" className="text-sm text-green-600 underline">
+      <Link
+        to="/"
+        className="text-sm text-green-600 underline hover:text-green-700"
+      >
         Already have an account?
       </Link>
     </FormContainer>

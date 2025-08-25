@@ -11,7 +11,7 @@ const Field = (props) => {
         type={type}
         value={value}
         onChange={onChange}
-        className="w-64 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 focus:outline-emerald-600"
+        className="w-64 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 hover:bg-slate-100 focus:outline-emerald-600"
       />
     </div>
   );
