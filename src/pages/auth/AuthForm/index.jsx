@@ -11,8 +11,6 @@ const AuthForm = (props) => {
     return initialState;
   });
 
-  console.log(values);
-
   return (
     <form className="m-4 rounded-lg border border-slate-200 bg-white p-4 font-lato">
       {fields.map((field) => (
