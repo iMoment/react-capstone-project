@@ -1,5 +1,6 @@
 const Field = (props) => {
   const { label, type, value, onChange } = props;
+
   return (
     <div className="my-4 flex flex-col">
       <label htmlFor={label} className="pl-1 text-slate-500">
