@@ -5,6 +5,7 @@ import SignInPage from "./pages/auth/SignInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import * as userService from "services/user";
 import SessionContext from "contexts/SessionContext";
+import PlantListPage from "pages/PlantListPage";
 
 const App = () => {
   const [sessionToken, setSessionToken] = useState(() =>
@@ -28,7 +29,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignInPage />} />
-          <Route path="sign-up" element={<SignUpPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/plants" element={<PlantListPage />} />
         </Routes>
       </BrowserRouter>
     </SessionContext.Provider>
