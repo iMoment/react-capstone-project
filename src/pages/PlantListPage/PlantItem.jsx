@@ -10,13 +10,13 @@ const PlantItem = (props) => {
   return (
     <div className="mx-5 my-8">
       <Link to={`/plants/${plant.id}`}>
-        <div className="relative">
-          <img
-            className="h-[320px] w-[280px] rounded-md shadow-xl"
-            src={plant.images[imageIdx].src}
-          />
-          <div className="absolute left-0 top-0 h-full w-full rounded-md hover:bg-black/10"></div>
-        </div>
+        {/* <div className="relative"> */}
+        <img
+          className="h-[320px] w-[280px] rounded-md shadow-xl"
+          src={plant.images[imageIdx].src}
+        />
+        {/* <div className="absolute left-0 top-0 h-full w-full rounded-md hover:bg-black/10"></div> */}
+        {/* </div> */}
       </Link>
       <div className="my-3 flex justify-between">
         <div className="font-playfair text-xl text-emerald-700">
