@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import SessionContext from "contexts/SessionContext";
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -13,17 +14,20 @@ const NavigationBar = () => {
       }}
     >
       <div className="flex w-full max-w-5xl items-center justify-between px-8 py-2">
-        <div className="flex flex-col items-center font-playfair text-2xl text-white">
-          <img
-            className="w-10"
-            src="https://static-task-assets.react-formula.com/capstone_logo_light.png"
-          />
-          Rica's Plants
-        </div>
+        <Link to="/plants">
+          <div className="relative flex flex-col items-center font-playfair text-2xl text-white">
+            <img
+              className="w-10"
+              src="https://static-task-assets.react-formula.com/capstone_logo_light.png"
+            />
+            <div className="absolute left-0 top-0 h-full w-full rounded-md hover:bg-emerald-800/10"></div>
+            Rica's Plants
+          </div>
+        </Link>
         <div className="flex flex-1 justify-end">
           <div className="relative min-w-32">
             <button
-              className="flex items-center text-white hover:text-emerald-200"
+              className="flex items-center text-white hover:text-emerald-50"
               onClick={() => {
                 setIsUserMenuOpen(true);
               }}
