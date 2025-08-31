@@ -18,7 +18,7 @@ const PlantShowPage = () => {
       setPlant(data);
       setIsLoading(false);
     })();
-  }, []);
+  }, [plantId]);
 
   return (
     <>
