@@ -1,13 +1,12 @@
 import clsx from "clsx";
 import { useState, useContext, useEffect, useCallback } from "react";
-import { RemoveScroll } from "react-remove-scroll";
+import { motion } from "framer-motion";
 import SessionContext from "contexts/SessionContext";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import * as cartService from "services/cart";
 import CartItem from "./CartItem";
 
-const CartModal = (props) => {
-  const { setIsCartModalOpen } = props;
+const CartModal = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [cartItems, setCartItems] = useState([]);
   const { username } = useContext(SessionContext);
@@ -31,11 +30,15 @@ const CartModal = (props) => {
   }
 
   return (
-    <div className="flex h-screen w-full max-w-xl flex-col bg-green-50">
+    <motion.div
+      className="flex h-screen w-full max-w-xl flex-col bg-green-50"
+      initial={{ translateX: "100%" }}
+      animate={{ translateX: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="bg-emerald-800 py-9 text-center font-playfair text-3xl text-white shadow-md">
         {username}'s cart
       </div>
-
       {isLoading ? (
         <LoadingSpinner />
       ) : (
@@ -73,7 +76,7 @@ const CartModal = (props) => {
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 
