@@ -31,61 +31,49 @@ const CartModal = (props) => {
   }
 
   return (
-    <RemoveScroll>
-      <div className="fixed left-0 top-0 flex h-full w-full justify-end bg-black/30 font-lato backdrop-blur-sm">
-        <div className="flex h-screen w-full max-w-xl flex-col bg-green-50">
-          <button
-            className="absolute right-0 top-0 p-4"
-            onClick={() => setIsCartModalOpen(false)}
-          >
-            <i className="fa-regular fa-circle-xmark text-4xl text-emerald-50" />
-          </button>
-          <div className="bg-emerald-800 py-9 text-center font-playfair text-3xl text-white shadow-md">
-            {username}'s cart
-          </div>
-
-          {isLoading ? (
-            <LoadingSpinner />
-          ) : (
-            <>
-              <div className="flex-1 overflow-y-scroll">
-                {cartItems.map((cartItem, idx) => (
-                  <div
-                    key={cartItem.id}
-                    className={clsx(
-                      "mx-5 mt-8 pt-8",
-                      idx !== 0 && "border-t border-slate-200",
-                    )}
-                  >
-                    <CartItem cartItem={cartItem} fetchCart={fetchCart} />
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col border-t border-slate-200 px-4 pb-4">
-                <div className="flex justify-between py-4 text-slate-400">
-                  <div>{totalQuantity} items</div>
-                  <div>
-                    Subtotal:
-                    <span className="ml-2 text-lg text-slate-500">
-                      ${subTotal}
-                    </span>
-                  </div>
-                </div>
-                <button
-                  className="flex items-center justify-center rounded-full bg-emerald-700 py-3 text-lg text-white"
-                  onClick={() => {
-                    alert("This app is not a real plant selling site.");
-                  }}
-                >
-                  Checkout{" "}
-                  <i className="fa-regular fa-arrow-right-to-line ml-2 text-2xl" />
-                </button>
-              </div>
-            </>
-          )}
-        </div>
+    <div className="flex h-screen w-full max-w-xl flex-col bg-green-50">
+      <div className="bg-emerald-800 py-9 text-center font-playfair text-3xl text-white shadow-md">
+        {username}'s cart
       </div>
-    </RemoveScroll>
+
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <div className="flex-1 overflow-y-scroll pb-16">
+            {cartItems.map((cartItem, idx) => (
+              <div
+                key={cartItem.id}
+                className={clsx(
+                  "mx-5 mt-8 pt-8",
+                  idx !== 0 && "border-t border-slate-200",
+                )}
+              >
+                <CartItem cartItem={cartItem} fetchCart={fetchCart} />
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col border-t border-slate-200 px-4 pb-4">
+            <div className="flex justify-between py-4 text-slate-400">
+              <div>{totalQuantity} items</div>
+              <div>
+                Subtotal:
+                <span className="ml-2 text-lg text-slate-500">${subTotal}</span>
+              </div>
+            </div>
+            <button
+              className="flex items-center justify-center rounded-full bg-emerald-700 py-3 text-lg text-white"
+              onClick={() => {
+                alert("This app is not a real plant selling site.");
+              }}
+            >
+              Checkout{" "}
+              <i className="fa-regular fa-arrow-right-to-line ml-2 text-2xl" />
+            </button>
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 
